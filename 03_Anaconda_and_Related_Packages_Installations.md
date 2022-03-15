@@ -76,6 +76,18 @@ pip install pyrama
 conda install -c omnia openmm
 ```
 
+or
+
+```
+conda install -c conda-forge openmm
+```
+
+or with GPU support
+
+```
+conda install -c conda-forge openmm cudatoolkit=10.1
+```
+
 ### NAMD
 
 ```bash
