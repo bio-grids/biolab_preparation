@@ -28,7 +28,44 @@ Checking available cuda core
 
 ## Install OpenMPI
 
+### Install
+
 `sudo apt-get install openmpi-bin`
+
+### Build
+
+1. Install latest gcc, g++, gfortran
+```shell
+sudo apt install gcc g++ gfortran -y
+```
+2. Download current version from http://www.open-mpi.org
+3. Extract it
+```shell
+tar -jxf openmpi-x.x.x.tar.bz2
+cd openmpi-x.x.x
+```
+4. Configure and install
+```shell
+./configure --prefix=$HOME/opt/openmpi CC=gcc-11 CXX=g++-11 FC=gfortran-11
+make -j8 all
+make -j8 install
+```
+5. Adapt PATH and LD_LIBRARY_PATH environment variable:
+```shell
+echo "export PATH=\$PATH:\$HOME/opt/openmpi/bin" >> $HOME/.bashrc
+echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$HOME/opt/openmpi/lib" >> $HOME/.bashrc
+source $HOME/.bashrc
+```
+6. Test installation:
+```shell
+mpirun -h
+```
+7. Clean folder and files:
+```shell
+cd
+rm $HOME/local/src/openmpi-x.x.x.tar.bz2
+rm -rf $HOME/local/src/openmpi-x.x.x
+```
 
 ## Installing gcc and g++ 7
 
